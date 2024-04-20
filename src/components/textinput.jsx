@@ -3,7 +3,7 @@ export const TextInput = ({ inputData, value, onSubmit}) => {
     return (
     <div>  
         <p>Contacts</p>
-        <div> 
+        <form onSubmit={onSubmit}> 
             <p>Name</p>    
                 <input
                 type="text"
@@ -13,9 +13,9 @@ export const TextInput = ({ inputData, value, onSubmit}) => {
                     required
                     onChange={inputData}
                 />
-                <button type='submit' onClick={onSubmit}>Add Contact</button>
+                <button type='submit'>Add Contact</button>
                 <p>{value}</p>
-        </div> 
+        </form> 
     </div>
     )
 }
