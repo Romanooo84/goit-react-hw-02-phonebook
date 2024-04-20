@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 export const App = () => {
   const [contacts, setContacts] = useState([]);
   const [name, setName] = useState('');
-  const [phoneNumber, setphoneNumber] = useState()
 
   const InputData = (event) => {
     event.preventDefault()
