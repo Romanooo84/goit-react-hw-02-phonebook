@@ -12,6 +12,7 @@ export const App = () => {
   };
   
   const onSubmit = (event) => {
+    event.preventDefault()
     let id=contacts.length+1
     setContacts(prevValue => [...prevValue, { name, id }]);
     console.log(contacts)
