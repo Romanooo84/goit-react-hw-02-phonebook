@@ -13,7 +13,7 @@ export const TextInput = ({ inputData, value, onSubmit}) => {
                     required
                     onChange={inputData}
                 />
-                <button onClick={onSubmit}>Add Contact</button>
+                <button type='submit' onClick={onSubmit}>Add Contact</button>
                 <p>{value}</p>
         </div> 
     </div>

@@ -13,9 +13,8 @@ export const App = () => {
   
   const onSubmit = (event) => {
     let id=contacts.length+1
-      setContacts(prevValue => [...prevValue, { name, id}]);
+    setContacts(prevValue => [...prevValue, { name, id }]);
     console.log(contacts)
-    console.log(contacts[0].name)
     }
 
   return (
