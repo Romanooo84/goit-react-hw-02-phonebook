@@ -1,4 +1,4 @@
-export const TextInput = ({ inputData, onSubmit}) => {
+export const TextInput = ({ onChange, onSubmit}) => {
     
     return (
     <div>  
@@ -12,7 +12,7 @@ export const TextInput = ({ inputData, onSubmit}) => {
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
-                onChange={inputData}
+                onChange={onChange}
                 />
                 <button type='submit'>Add Contact</button>
                 <p></p>

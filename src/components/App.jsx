@@ -3,36 +3,50 @@ import { Contacts } from "./contacts";
 import React, { useState } from 'react';
 import { nanoid } from "nanoid";
 
-const INITIAL_STATE = {
-  contacts: [],
-  name:'',
-}
+
 
 export const App = () => {
-  const [usersList, setusersList] = useState({ ...INITIAL_STATE });
-
-  const InputData = (event) => {
-    event.preventDefault()
-    const { name, value } = event.target
-    let id=nanoid()
-    setusersList({...INITIAL_STATE, [name]: {user: value, id: id} })
+  const state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+    name: '',
+    number: '',
   };
+  const [userData, setUserData] = useState(state);
 
-  const onSubmit = (event) => {
-  event.preventDefault();
-  setusersList(prevValue => {
-    return {
-      ...prevValue,
-      contacts: [...prevValue.contacts, usersList.name]
-    };
-  });
-    console.log(usersList)
-};
-  
+  const onChange = event => {
+    setUserData({ ...userData, [event.target.name]: event.target.value });
+    
+  }
+
+  const onSubmit = event => {
+    event.preventDefault();
+    const { name, number, contacts } = userData;
+    const isContact = contacts.some(
+      contact => contact.name.toLowerCase() === name.trim().toLowerCase()
+    );
+    if (isContact) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+
+    setUserData({
+      ...userData,
+      contacts: [...contacts, { id: nanoid(),name, number }],
+      name: '',
+      number: '',
+    });
+  }; 
+
   return (
     <div>
-      <TextInput inputData={InputData} onSubmit={onSubmit} />
-      <Contacts />
+      <TextInput onChange={onChange} onSubmit={onSubmit} />
+      <Contacts userData={userData} />
     </div>
   );
   };
