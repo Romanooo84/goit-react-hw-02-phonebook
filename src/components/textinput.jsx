@@ -1,5 +1,5 @@
-export const TextInput = ({ onChange, onSubmit}) => {
-    
+export const TextInput = ({ onChange, onSubmit, value}) => {
+    console.log(value)
     return (
     <div>  
         <p>Contacts</p>
@@ -8,6 +8,7 @@ export const TextInput = ({ onChange, onSubmit}) => {
                     <input
                     type="text"
                     name="name"
+                    value={value}
                     id='id'
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -24,15 +25,6 @@ export const TextInput = ({ onChange, onSubmit}) => {
                     />
                 <button type='submit'>Add Contact</button>
             </form> 
-                <input
-                    type="text"
-                    name="filter"
-                    id='id'
-                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                    required
-                    onChange={onChange}
-                />
     </div>
     )
 }

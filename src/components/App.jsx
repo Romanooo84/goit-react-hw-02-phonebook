@@ -19,9 +19,23 @@ export const App = () => {
     number: '',
   };
   const [userData, setUserData] = useState(state);
+  const [inputValue, setInputValue] = useState();
+  
 
   const onChange = event => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
+  }
+
+  const onDelete = event => {
+    const dataNotToDelete = userData.contacts.filter(contact =>
+            !contact.id.toLowerCase().includes(event.target.id.toLowerCase())
+    )
+    setUserData({
+      contacts: dataNotToDelete,
+      filter: '',
+      name: '',
+      number: '',
+    });
   }
 
 
@@ -39,15 +53,22 @@ export const App = () => {
     setUserData({
       ...userData,
       contacts: [...contacts, { id: nanoid(),name, number }],
+      filter: '',
       name: '',
       number: '',
     });
+
+    setInputValue()
+    
   }; 
 
   return (
     <div>
-      <TextInput onChange={onChange} onSubmit={onSubmit} />
-      <Contacts userData={userData} />
+      <h1>Phonebook</h1>
+      <TextInput onChange={onChange} onSubmit={onSubmit} value={inputValue}/>
+      <h2>Contacts</h2>
+      <Filter onChange={onChange}/>
+      <Contacts userData={userData} onDelete={onDelete} />
     </div>
   );
   };
