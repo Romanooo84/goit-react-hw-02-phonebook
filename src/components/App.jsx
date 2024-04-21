@@ -1,6 +1,7 @@
 import { TextInput } from "./textinput";
 import { Contacts } from "./contacts";
 import React, { useState } from 'react';
+import { nanoid } from "nanoid";
 
 const INITIAL_STATE = {
   id: '',
@@ -13,7 +14,8 @@ export const App = () => {
   const InputData = (event) => {
     event.preventDefault()
     const { name, value } = event.target
-    setContacts({[name]: value })
+    let id = nanoid()
+    setContacts({id:id, [name]: value })
     console.log(contacts)
   };
   
