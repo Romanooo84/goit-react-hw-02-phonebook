@@ -4,25 +4,35 @@ import React, { useState } from 'react';
 import { nanoid } from "nanoid";
 
 const INITIAL_STATE = {
-  id: '',
+  contacts: [],
   name:'',
 }
 
 export const App = () => {
-  const [contacts, setContacts] = useState({ ...INITIAL_STATE });
+  const [usersList, setusersList] = useState({ ...INITIAL_STATE });
 
   const InputData = (event) => {
     event.preventDefault()
     const { name, value } = event.target
-    let id = nanoid()
-    setContacts({id:id, [name]: value })
-    console.log(contacts)
+    let id=nanoid()
+    setusersList({...INITIAL_STATE, [name]: {user: value, id: id} })
   };
+
+  const onSubmit = (event) => {
+  event.preventDefault();
+  setusersList(prevValue => {
+    return {
+      ...prevValue,
+      contacts: [...prevValue.contacts, usersList.name]
+    };
+  });
+    console.log(usersList)
+};
   
   return (
     <div>
-      <TextInput inputData={InputData} />
-      <Contacts contacts={contacts} />
+      <TextInput inputData={InputData} onSubmit={onSubmit} />
+      <Contacts />
     </div>
   );
   };

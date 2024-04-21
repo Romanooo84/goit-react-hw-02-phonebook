@@ -1,9 +1,8 @@
-export const Contacts = ({ contacts }) => {
-    let value = contacts.name
+export const Contacts = () => {
     return (
         <div>
             <p>Contacts</p>
-            <p>Liczba kontaktów:</p>
+            <p></p>
         </div>
-    )
+    );
 }
