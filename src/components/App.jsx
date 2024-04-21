@@ -1,5 +1,6 @@
 import { TextInput } from "./textinput";
 import { Contacts } from "./contacts";
+import { Filter } from "./filter";
 import React, { useState } from 'react';
 import { nanoid } from "nanoid";
 
@@ -21,8 +22,8 @@ export const App = () => {
 
   const onChange = event => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
-    
   }
+
 
   const onSubmit = event => {
     event.preventDefault();
